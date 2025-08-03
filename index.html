@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Card Generator | Professional Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --danger: #d63031;
+            --warning: #fdcb6e;
+            --info: #0984e3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo i {
+            margin-right: 15px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .premium-badge {
+            background-color: var(--warning);
+            color: var(--dark);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #636e72, #b2bec3);
+        }
+        
+        .result-container {
+            margin-top: 2rem;
+        }
+        
+        .result-box {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .result-box pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: rgba(0, 184, 148, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+        
+        .alert-danger {
+            background-color: rgba(214, 48, 49, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-credit-card"></i>
+                <span>Premium Card Generator <span class="premium-badge">PRO</span></span>
+            </div>
+            <p class="tagline">Generate unlimited high-quality test credit cards for development and testing purposes</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="generator">Card Generator</div>
+            <div class="tab" data-tab="batch">Batch Generator</div>
+            <div class="tab" data-tab="validator">Luhn Validator</div>
+        </div>
+        
+        <div id="alert-box"></div>
+        
+        <div class="tab-content active" id="generator">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-random"></i> Single Card Generator</h2>
+                <div class="form-group">
+                    <label for="card-type">Card Type</label>
+                    <select id="card-type">
+                        <option value="random">Random (Recommended)</option>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="amex">American Express</option>
+                        <option value="discover">Discover</option>
+                        <option value="jcb">JCB</option>
+                    </select>
+                </div>
+                <button id="generate-btn" class="btn btn-block">Generate Card</button>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <pre id="generated-card">No card generated yet. Click the button above.</pre>
+                        <button class="copy-btn" data-target="generated-card"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="batch">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-copy"></i> Batch Generator</h2>
+                <div class="form-group">
+                    <label for="batch-count">Number of Cards to Generate</label>
+                    <input type="number" id="batch-count" min="1" max="1000" value="100">
+                </div>
+                <div class="form-group">
+                    <label for="batch-type">Card Type</label>
+                    <select id="batch-type">
+                        <option value="random">Random (Recommended)</option>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="amex">American Express</option>
+                        <option value="discover">Discover</option>
+                        <option value="jcb">JCB</option>
+                    </select>
+                </div>
+                <button id="batch-generate-btn" class="btn btn-block">Generate Batch</button>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <pre id="batch-generated-cards">No cards generated yet. Click the button above.</pre>
+                        <button class="copy-btn" data-target="batch-generated-cards"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="validator">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-check-circle"></i> Luhn Validator</h2>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="Enter card number to validate">
+                </div>
+                <button id="validate-btn" class="btn btn-block">Validate Card</button>
+                
+                <div class="result-container">
+                    <div class="result-box">
+                        <pre id="validation-result">No card validated yet. Enter a card number and click validate.</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Luhn Algorithm</h3>
+                <p>All generated cards pass the Luhn check, making them valid for testing purposes.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Fast Generation</h3>
+                <p>Generate hundreds of valid test cards in seconds with our optimized algorithm.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h3 class="feature-title">Multiple Formats</h3>
+                <p>Supports all major card types including Visa, Mastercard, Amex, Discover and JCB.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Premium Card Generator. This tool is for development and testing purposes only.</p>
+            <p>Generated cards are not real and cannot be used for actual transactions.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Copy button functionality
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const textToCopy = document.getElementById(targetId).textContent;
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showAlert('Copied to clipboard!', 'success');
+                }).catch(err => {
+                    showAlert('Failed to copy text', 'danger');
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+        
+        // Alert function
+        function showAlert(message, type) {
+            const alertBox = document.getElementById('alert-box');
+            alertBox.innerHTML = `
+                <div class="alert alert-${type}">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}
+                </div>
+            `;
+            alertBox.style.display = 'block';
+            
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Generate a single card
+        document.getElementById('generate-btn').addEventListener('click', () => {
+            const cardType = document.getElementById('card-type').value;
+            const generatedCard = generateCard(cardType);
+            document.getElementById('generated-card').textContent = generatedCard;
+            showAlert('Card generated successfully!', 'success');
+        });
+        
+        // Generate batch of cards
+        document.getElementById('batch-generate-btn').addEventListener('click', () => {
+            const count = parseInt(document.getElementById('batch-count').value);
+            const cardType = document.getElementById('batch-type').value;
+            
+            if (count < 1 || count > 1000) {
+                showAlert('Please enter a number between 1 and 1000', 'danger');
+                return;
+            }
+            
+            let cards = '';
+            for (let i = 0; i < count; i++) {
+                cards += generateCard(cardType) + '\n';
+            }
+            
+            document.getElementById('batch-generated-cards').textContent = cards;
+            showAlert(`Generated ${count} cards successfully!`, 'success');
+        });
+        
+        // Validate card
+        document.getElementById('validate-btn').addEventListener('click', () => {
+            const cardNumber = document.getElementById('card-number').value.replace(/\s+/g, '');
+            
+            if (!cardNumber) {
+                showAlert('Please enter a card number', 'danger');
+                return;
+            }
+            
+            const isValid = luhnCheck(cardNumber);
+            const resultText = `Card: ${cardNumber}\nStatus: ${isValid ? 'VALID ✅' : 'INVALID ❌'}`;
+            
+            document.getElementById('validation-result').textContent = resultText;
+            showAlert(`Card is ${isValid ? 'valid' : 'invalid'}`, isValid ? 'success' : 'danger');
+        });
+        
+        // Card generation functions (would be connected to your Python backend in a real implementation)
+        function generateCard(type = 'random') {
+            // This is a mock implementation - in a real app, you'd call your Python backend
+            const types = ['visa', 'mastercard', 'amex', 'discover', 'jcb'];
+            const selectedType = type === 'random' ? types[Math.floor(Math.random() * types.length)] : type;
+            
+            let prefix, length;
+            
+            switch(selectedType) {
+                case 'visa':
+                    prefix = '4';
+                    length = 16;
+                    break;
+                case 'mastercard':
+                    prefix = ['51', '52', '53', '54', '55'][Math.floor(Math.random() * 5)];
+                    length = 16;
+                    break;
+                case 'amex':
+                    prefix = ['34', '37'][Math.floor(Math.random() * 2)];
+                    length = 15;
+                    break;
+                case 'discover':
+                    prefix = ['6011', '65'][Math.floor(Math.random() * 2)];
+                    length = prefix === '6011' ? 16 : 16;
+                    break;
+                case 'jcb':
+                    prefix = ['3528', '3589'][Math.floor(Math.random() * 2)];
+                    length = 16;
+                    break;
+            }
+            
+            // Generate the remaining digits
+            let cardNumber = prefix;
+            while (cardNumber.length < length - 1) {
+                cardNumber += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate Luhn check digit
+            cardNumber += calculateLuhnCheckDigit(cardNumber);
+            
+            // Generate expiry and CVV
+            const now = new Date();
+            const mm = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+            const yyyy = String(now.getFullYear() + Math.floor(Math.random() * 5) + 1);
+            const cvvLength = selectedType === 'amex' ? 4 : 3;
+            let cvv = '';
+            for (let i = 0; i < cvvLength; i++) {
+                cvv += Math.floor(Math.random() * 10);
+            }
+            
+            return `${cardNumber}|${mm}|${yyyy}|${cvv}`;
+        }
+        
+        function luhnCheck(cardNumber) {
+            // Simplified Luhn check for demo purposes
+            let sum = 0;
+            let alternate = false;
+            
+            for (let i = cardNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(cardNumber.charAt(i));
+                
+                if (alternate) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                
+                sum += digit;
+                alternate = !alternate;
+            }
+            
+            return (sum % 10) === 0;
+        }
+        
+        function calculateLuhnCheckDigit(partialCardNumber) {
+            let sum = 0;
+            let alternate = true;
+            
+            for (let i = partialCardNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(partialCardNumber.charAt(i));
+                
+                if (alternate) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                
+                sum += digit;
+                alternate = !alternate;
+            }
+            
+            return (10 - (sum % 10)) % 10;
+        }
+    </script>
+</body>
+</html>
