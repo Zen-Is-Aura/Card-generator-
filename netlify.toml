@@ -1,0 +1,28 @@
+functionsDirectory = "/storage/emulated/0/website/HTML/netlify/functions"
+functionsDirectoryOrigin = "config-v1"
+plugins = []
+headers = []
+redirects = []
+
+[build]
+publish = "/storage/emulated/0/website/HTML"
+publishOrigin = "default"
+functions = "/storage/emulated/0/website/HTML/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[functions]
+
+[functions."*"]
