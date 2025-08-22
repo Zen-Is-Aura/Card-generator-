@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from game-nine-lovat.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2017], Fri, 22 Aug 2025 13:50:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Stairs Game</title>
+  <link rel="stylesheet" href="game.css">
+  <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+ <div id="gameArea">
+    <div id="box"></div>
+    <div class="stair step1"></div>
+    <div class="stair step2"></div>
+    <div class="stair step3"></div>
+    <div class="stair step4"></div>
+    <div class="ground"></div>
+    <div id="heart"></div>
+  </div>
+
+  <video id="endingVideo" src="gustokarinniya.mp4" autoplay muted></video>
+<div id="winMessage"><span id="typedText"></span></div>
+
+
+  <div class="controls" id="controls">
+    <button class="up"><i class="fa-solid fa-arrow-up"></i></button>
+    <button class="left"><i class="fa-solid fa-arrow-left"></i></button>
+    <button class="down"><i class="fa-solid fa-arrow-down"></i></button>
+    <button class="right"><i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+
+  <audio id="jumpSound" src="jump4.mp4" preload="auto"></audio>
+
+  <script src="game.js">
+  
+  </script>
+</body>
+
+<!-- Mirrored from game-nine-lovat.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2017], Fri, 22 Aug 2025 13:51:04 GMT -->
+</html>
+
+
